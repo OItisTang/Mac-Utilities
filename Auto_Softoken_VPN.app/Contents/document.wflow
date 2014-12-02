@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>409</string>
+	<key>AMApplicationVersion</key>
+	<string>2.5</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>on run {input, parameters}	-- config file	set configFile to POSIX path of (((path to home folder) as text) &amp; ".auto_softoken_vpn.cfg")		-- global variable	set vpnName to ""	set softokenPassword to ""		-- read config or generate config from user input	tell application "Finder"		if exists configFile as POSIX file then			set config to (do shell script "cat " &amp; configFile)						set ASTID to AppleScript's text item delimiters			set AppleScript's text item delimiters to ","			set theArray to config's text items			set vpnName to item 1 of theArray			set softokenPassword to item 2 of theArray			set AppleScript's text item delimiters to ASTID		else			repeat				set vpnName to text returned of (display dialog "Please enter VPN name(no empty):" with title "Auto Softoken VPN" default answer "CRDC-SH")				if vpnName is not equal to "" then					exit repeat				end if			end repeat			repeat				set softokenPassword to text returned of (display dialog "Please enter Softoken password(no empty):" with title "Auto Softoken VPN" default answer "")				if softokenPassword is not equal to "" then					exit repeat				end if			end repeat						display dialog "Your preference is saved to:" &amp; return &amp; configFile with title "Auto Softoken VPN"						do shell script "echo \"" &amp; vpnName &amp; "," &amp; softokenPassword &amp; "\" &gt; " &amp; configFile		end if	end tell		tell application "System Events"		tell current location of network preferences			set VPNservice to service vpnName			set isConnected to connected of current configuration of VPNservice			if not isConnected then				-- open the Softoken II application and focus on the textbox				do shell script "open -a SofToken\\ II"								-- switch to Softoken and get dynamic password				tell application "SofToken II"					activate					delay 0.5					tell application "System Events"						tell process "SofToken II"							keystroke softokenPassword							keystroke return						end tell					end tell					delay 0.5					quit				end tell								-- connect to VPN				connect VPNservice								-- interaction with system dialog of VPN connection				tell application "System Events"					tell process "UserNotificationCenter"						-- wait password window to show						repeat 10 times							delay 0.5							if exists window 1 then								keystroke "v" using {command down}								keystroke return																-- wait info window to show								repeat 10 times									delay 0.5									if exists window 1 then										keystroke return										exit repeat									end if								end repeat																exit repeat							end if						end repeat											end tell -- process "UserNotificationCenter"				end tell -- application "System Events"							end if -- not isConnected		end tell -- current location of network preferences	end tell -- application "System Events"			return inputend run</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>A0BAF2DF-A9A5-4A0B-B890-AF3866611D9A</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>8490AAD9-CE4F-4E25-9E9C-26DEE5869AEB</string>
+				<key>UUID</key>
+				<string>400783F9-0024-40FC-94E0-46ABB5E32C3A</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>449.000000:459.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict/>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.application</string>
+	</dict>
+</dict>
+</plist>

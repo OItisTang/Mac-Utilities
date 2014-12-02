@@ -1,6 +1,6 @@
 Some useful utilities:
 
-* Auto_VPN_CRDC-SH.app
+* Auto_Softoken_VPN.app
   auto connecting to vpn, including auto getting Softoken dynamic password
 
 * CloseOrHide.app
