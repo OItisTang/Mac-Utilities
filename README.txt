@@ -3,6 +3,8 @@ Some useful utilities:
 * Auto_Softoken_VPN.app
   auto connecting to vpn, including auto getting Softoken dynamic password
 
+* Book2Images.app
+  screenshot each page of epub in iBooks
 
 * CloseOrHide.app
   an apple script wrapped in app, that determines whether to close an app or hide an app.
@@ -16,7 +18,7 @@ Some useful utilities:
   convert PDF file to a image for each page
 
 
-* ics2iCalendar
+* ics2iCalendar.app
   .ics files exported from Microsoft Outlook can be imported into iCloud/iCalendar.
   
   However, if you wish to remove those events, you must send a "decline" mail to its organizer other than deleting it directly.
