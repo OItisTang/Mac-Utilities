@@ -13,6 +13,8 @@ Some useful utilities:
   So that app knows whether to close or hide an app.
   Run this.
 
+* Image2PDF.app
+  create PDF file from images
 
 * PDF2Image.app
   convert PDF file to a image for each page
