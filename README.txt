@@ -3,6 +3,9 @@ Some useful utilities:
 * Auto_Softoken_VPN.app
   auto connecting to vpn, including auto getting Softoken dynamic password
 
+* Auto_Softoken_AnyConnect_VPN.app
+  auto connecting to AnyConnect vpn, including auto getting Softoken dynamic password
+
 * Book2Images.app
   screenshot each page of epub in iBooks
 
