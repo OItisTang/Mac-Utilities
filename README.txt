@@ -57,3 +57,5 @@ Some useful utilities:
   #     cut
   #
 
+* Reconnect_wired_802.1x.app
+  If Mac fails to pass wired dot1x authentication, disconnect and connect again, mostly, it helps.
