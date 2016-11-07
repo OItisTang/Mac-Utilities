@@ -59,3 +59,11 @@ Some useful utilities:
 
 * Reconnect_wired_802.1x.app
   If Mac fails to pass wired dot1x authentication, disconnect and connect again, mostly, it helps.
+
+* odd&even pages cut then merge.workflow
+  Sometimes, scanned PDF needs to be cut, but odd pages are different from even pages.
+  This tool is to rescue.
+  1. split scanned PDF into Odd PDF and Even PDF.
+  2. cut them by hand, and export a copy (for saving the cut)
+  3. rename Odd PDF to "0.xxx.pdf" and Even PDF to "1.xxx.pdf"
+  4. merge it
